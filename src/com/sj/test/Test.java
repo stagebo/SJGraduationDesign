@@ -44,3 +44,11 @@ public class Test {
 		
 	}
 }
+class rt1{
+	public static void main(String[] args) {
+		
+		System.out.println("tju.edu.cn");
+		
+	}
+}
+

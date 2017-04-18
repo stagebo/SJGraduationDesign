@@ -3,6 +3,15 @@ package com.sj.utils;
 import java.util.Arrays;
 
 public class CommonUtils {
+	public static int getMax(int[] a){
+		int max=a[0];
+		for(int i=0;i<a.length;i++){
+			if(a[i]>max){
+				max=a[i];
+			}
+		}
+		return max;
+	}
 	public static int getMin(int[] a){
 		int min=a[0];
 		for(int i=0;i<a.length;i++){
@@ -22,6 +31,17 @@ public class CommonUtils {
 			}
 		}
 		return minIndex;
+	}
+	public static int getMaxIndex(int[] a){
+		int max=a[0];
+		int maxIndex=0;
+		for(int i=0;i<a.length;i++){
+			if(a[i]>max){
+				max=a[i];
+				maxIndex=i;
+			}
+		}
+		return maxIndex;
 	}
 	public static int getMinIndex(double[] a){
 		double min=a[0];

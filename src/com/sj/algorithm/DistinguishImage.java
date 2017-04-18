@@ -21,7 +21,7 @@ import com.sj.utils.StringUtils;
 public class DistinguishImage {
 
 	/**
-	 * 识别图片矩阵
+	 * 识别图片矩阵,通过与样本值的平均欧式距离最小值识别
 	 * 
 	 * @param a
 	 *            int[][] 图片矩阵
@@ -72,6 +72,13 @@ public class DistinguishImage {
 		return result;
 	}
 
+	/**
+	 * 识别图像矩阵，通过最近邻算法求解
+	 * 
+	 * @param a
+	 *            int[][] 有效图像矩阵
+	 * @return int 识别结果
+	 */
 	public static int DistinguishNumber1(int[][] a) {
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < a.length; j++) {
@@ -83,41 +90,40 @@ public class DistinguishImage {
 			}
 		}
 		StringUtils.printArray(a);
+		/*获取样本源*/
 		ArrayList<int[][]> source = ReadSampleUtils.SOURCE;
+		/*计算目标与样本源的距离,map结构：<distence,[sample1,sample2,sample3...]>*/
 		TreeMap<Double, List<Integer>> distenceMap = new TreeMap<Double, List<Integer>>();
 		for (int i = 0; i < source.size(); i++) {
-			int index=i/CommonEnum.ImageSample.SAMPLE_COUNT;
+			int index = i / CommonEnum.ImageSample.SAMPLE_COUNT;
 			double v = CommonUtils.getEuDistence(a, source.get(i));
-			List<Integer> list=null;
+			List<Integer> list = null;
 			if (distenceMap.containsKey(v)) {
-				list=distenceMap.get(v);				
+				list = distenceMap.get(v);
 			} else {
-				list=new LinkedList<Integer>();				
+				list = new LinkedList<Integer>();
 			}
 			list.add(index);
 			distenceMap.put(v, list);
 		}
-		TreeMap<Double, List<Integer>> dMap=new TreeMap<Double,List<Integer>>();
-		for(int i=0;i<20;i++){
-			Double key=distenceMap.firstKey();//System.out.println(key+"---"+ distenceMap.get(key));
-			dMap.put(key, distenceMap.get(key));
-			distenceMap.remove(key);
-		}
-		int[] re=new int[distenceMap.size()];
-		Double[] d=dMap.keySet().toArray(new Double[0]);
-		for(int i=0;i<d.length;i++){	
-			double vIndex=d[i];
-			List<Integer> value=dMap.get(vIndex);
-			if(value==null){
+		/*筛选出距离最小的前二十个样本,并建立数组柱形图*/
+		TreeMap<Double, List<Integer>> dMap = new TreeMap<Double, List<Integer>>();
+		int re[]=new int[distenceMap.size()];
+		for (int i = 0; i < 20; i++) {
+			Double key = distenceMap.firstKey();		
+			List<Integer> value =distenceMap.get(key);
+			if (value == null) {
 				continue;
 			}
-			for(int j=0;j<value.size();j++){
-				int v=value.get(j);System.out.println(v);
-				re[v]+=1;
+			for (int j = 0; j < value.size(); j++) {
+				int v = value.get(j);
+				System.out.println(v);
+				re[v] += 1;
 			}
 		}
 		StringUtils.printArray(re);
-		int result=CommonUtils.getMaxIndex(re);
+		/*取柱状图最高者为识别结果*/
+		int result = CommonUtils.getMaxIndex(re);
 		return result;
 	}
 
@@ -134,7 +140,7 @@ public class DistinguishImage {
 
 		/* 提取图片有用部分 */
 		imgR = ImageUtils.cutWhitePart(imgR);
-
+		/*切图部分代码存在边界问题待处理，边缘化问题返回空，暂不做处理*/
 		if (imgR == null) {
 			return -1;
 		}

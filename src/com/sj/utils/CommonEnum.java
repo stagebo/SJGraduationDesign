@@ -1,6 +1,11 @@
 package com.sj.utils;
 
 public class CommonEnum {
+	/**
+	 * 枚举类
+	 * @author Administrator
+	 *
+	 */
 	public class ImageSample{
 		/**
 		 * 样本图片宽度

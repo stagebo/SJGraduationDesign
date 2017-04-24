@@ -1,8 +1,16 @@
 package com.sj.utils;
 
-import java.util.Arrays;
-
+/**
+ * 工具类
+ * @author Administrator
+ *
+ */
 public class CommonUtils {
+	/**
+	 * 获得数组最大值
+	 * @param a
+	 * @return
+	 */
 	public static int getMax(int[] a){
 		int max=a[0];
 		for(int i=0;i<a.length;i++){
@@ -12,6 +20,11 @@ public class CommonUtils {
 		}
 		return max;
 	}
+	/**
+	 * 活得数组最小值
+	 * @param a
+	 * @return
+	 */
 	public static int getMin(int[] a){
 		int min=a[0];
 		for(int i=0;i<a.length;i++){
@@ -21,6 +34,11 @@ public class CommonUtils {
 		}
 		return min;
 	}
+	/**
+	 * 获得数组最小值下标
+	 * @param a
+	 * @return
+	 */
 	public static int getMinIndex(int[] a){
 		int min=a[0];
 		int minIndex=0;
@@ -32,6 +50,11 @@ public class CommonUtils {
 		}
 		return minIndex;
 	}
+	/**
+	 * 获得数组最大值所在的下标
+	 * @param a
+	 * @return
+	 */
 	public static int getMaxIndex(int[] a){
 		int max=a[0];
 		int maxIndex=0;
@@ -43,6 +66,11 @@ public class CommonUtils {
 		}
 		return maxIndex;
 	}
+	/***
+	 * 获取数组最小值所在的下标
+	 * @param a
+	 * @return
+	 */
 	public static int getMinIndex(double[] a){
 		double min=a[0];
 		int minIndex=0;
@@ -54,6 +82,12 @@ public class CommonUtils {
 		}
 		return minIndex;
 	}
+	/**
+	 * 求矩阵的欧式距离
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public static double getEuDistence(int[][]a,int[][]b){
 		if(a==null||b==null)return -1;
 		if(a.length!=b.length)return -1;
@@ -68,6 +102,12 @@ public class CommonUtils {
 		
 		return di;
 	}
+	/**
+	 * 二维矩阵相加
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public static int[][] MaxtrixAdd(int[][]a,int[][]b){
 		if(a==null||b==null)return null;
 		if(a.length!=b.length)return null;

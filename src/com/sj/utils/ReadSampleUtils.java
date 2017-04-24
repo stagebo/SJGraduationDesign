@@ -5,10 +5,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.sj.utils.CommonEnum.ImageSample;
-
+/**
+ * 样本读取类
+ * @author Administrator
+ *
+ */
 public class ReadSampleUtils {
 	/**
 	 * 保存样本源

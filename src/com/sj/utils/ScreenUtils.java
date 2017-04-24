@@ -4,7 +4,11 @@ import java.awt.AWTException;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.image.BufferedImage;
-
+/**
+ * 截取屏幕工具类
+ * @author Administrator
+ *
+ */
 public class ScreenUtils {
 	/**
 	 * 指定屏幕区域截图，返回截图的BufferedImage对象

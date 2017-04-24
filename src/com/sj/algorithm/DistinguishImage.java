@@ -2,13 +2,8 @@ package com.sj.algorithm;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 import com.sj.utils.CommonEnum;
@@ -17,15 +12,18 @@ import com.sj.utils.CommonUtils;
 import com.sj.utils.ImageUtils;
 import com.sj.utils.ReadSampleUtils;
 import com.sj.utils.StringUtils;
-
+/**
+ * 图像识别算法函数工具
+ * @author Administrator
+ *
+ */
 public class DistinguishImage {
 
 	/**
 	 * 识别图片矩阵,通过与样本值的平均欧式距离最小值识别
 	 * 
 	 * @param a
-	 *            int[][] 图片矩阵
-	 * @return int 识别结果
+	 * @return 识别结果
 	 */
 	public static int DistinguishNumber(int[][] a) {
 		StringUtils.printArray(a);
@@ -53,7 +51,6 @@ public class DistinguishImage {
 		}
 		ArrayList<int[][]> l2 = new ArrayList<int[][]>();
 		for (int i = 0; i < 10; i++) {
-			double d = 0;
 			int temp[][] = new int[ImageSample.SAMPLE_COUNT][ImageSample.SAMPLE_COUNT];
 			for (int j = 0; j < ImageSample.SAMPLE_COUNT; j++) {
 				int r[][] = source.get(i * ImageSample.SAMPLE_COUNT + j);
@@ -76,8 +73,7 @@ public class DistinguishImage {
 	 * 识别图像矩阵，通过最近邻算法求解
 	 * 
 	 * @param a
-	 *            int[][] 有效图像矩阵
-	 * @return int 识别结果
+	 * @return 识别结果
 	 */
 	public static int DistinguishNumber1(int[][] a) {
 		for (int i = 0; i < a.length; i++) {
@@ -107,7 +103,6 @@ public class DistinguishImage {
 			distenceMap.put(v, list);
 		}
 		/*筛选出距离最小的前二十个样本,并建立数组柱形图*/
-		TreeMap<Double, List<Integer>> dMap = new TreeMap<Double, List<Integer>>();
 		int re[]=new int[distenceMap.size()];
 		for (int i = 0; i < 20; i++) {
 			Double key = distenceMap.firstKey();		
@@ -131,8 +126,7 @@ public class DistinguishImage {
 	 * 识别图片
 	 * 
 	 * @param BufferedImage
-	 *            img 图片
-	 * @return int 识别结果
+	 * @return 识别结果
 	 */
 	public static int DistinguishImages(BufferedImage img) {
 		/* 获得图片二值化矩阵 */

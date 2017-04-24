@@ -1,19 +1,22 @@
 package com.sj.test;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import java.util.List;
 
 import javax.swing.JFrame;
 
-import com.sj.utils.ImageUtils;
 import com.sj.utils.ReadSampleUtils;
 import com.sj.utils.StringUtils;
 import com.sj.widge.DrawFrame;
-
+/**
+ * 测试类，主函数入口处
+ * @author Administrator
+ *
+ */
 public class Test {
+	/**
+	 * 主函数-程序入口
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		DrawFrame app = new DrawFrame();
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

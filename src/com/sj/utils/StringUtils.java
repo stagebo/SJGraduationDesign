@@ -1,5 +1,9 @@
 package com.sj.utils;
-
+/**
+ * 字符串处理工具
+ * @author Administrator
+ *
+ */
 public class StringUtils {
 	public static void printArray(int a[][]){
 		for(int i=0;i<a.length;i++){

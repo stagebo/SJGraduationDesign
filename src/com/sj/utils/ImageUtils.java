@@ -2,16 +2,13 @@ package com.sj.utils;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.UUID;
 
-import javax.imageio.ImageIO;
-
-import com.sj.test.t;
 import com.sj.utils.CommonEnum.ImageSample;
-
+/**
+ * 图像工具类
+ * @author Administrator
+ *
+ */
 public class ImageUtils {
 	private static int THRESHOLD=128;
 	/**
@@ -122,7 +119,6 @@ public class ImageUtils {
 		for(int i=0;i<ww;i++){
 			for(int j=0;j<hh;j++){
 				try{					
-				int aa=a[sy+j][sx+i];
 				result[j][i]=a[sy+j][sx+i];
 				}catch(Exception e){
 					System.out.println("异常Index："+i+"--"+j);
@@ -137,7 +133,13 @@ public class ImageUtils {
 		
 		return result;
 	}
-	
+	/**
+	 * 根据二维数组矩阵活得二值化图片
+	 * @param a
+	 * @param w
+	 * @param h
+	 * @return
+	 */
 	public static BufferedImage getImageByArray(int[][] a,int w,int h){
 		System.out.println(a.length+"--"+a[0].length);
 		BufferedImage img=new BufferedImage(a[0].length,a.length, BufferedImage.TYPE_INT_RGB);

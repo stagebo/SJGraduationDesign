@@ -6,7 +6,7 @@ import java.awt.Robot;
 import java.awt.image.BufferedImage;
 /**
  * 截取屏幕工具类
- * @author Administrator
+ * @author  Stagebo
  *
  */
 public class ScreenUtils {

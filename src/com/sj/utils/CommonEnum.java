@@ -3,7 +3,7 @@ package com.sj.utils;
 public class CommonEnum {
 	/**
 	 * 枚举类
-	 * @author Administrator
+	 * @author  Stagebo
 	 *
 	 */
 	public class ImageSample{

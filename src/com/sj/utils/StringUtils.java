@@ -1,7 +1,7 @@
 package com.sj.utils;
 /**
  * 字符串处理工具
- * @author Administrator
+ * @author  Stagebo
  *
  */
 public class StringUtils {

@@ -9,7 +9,7 @@ import com.sj.utils.StringUtils;
 import com.sj.widge.DrawFrame;
 /**
  * 测试类，主函数入口处
- * @author Administrator
+ * @author  Stagebo
  *
  */
 public class Test {

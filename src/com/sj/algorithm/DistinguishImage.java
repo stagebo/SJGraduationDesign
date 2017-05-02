@@ -13,8 +13,8 @@ import com.sj.utils.ImageUtils;
 import com.sj.utils.ReadSampleUtils;
 import com.sj.utils.StringUtils;
 /**
- * 图像识别算法函数工具
- * @author Administrator
+ *  图像识别算法函数工具
+ * @author Stagebo
  *
  */
 public class DistinguishImage {
@@ -36,6 +36,7 @@ public class DistinguishImage {
 				}
 			}
 		}
+		//a=ImageUtils.thinImage(a);
 		double[] distence = new double[10];
 		ArrayList<int[][]> source = ReadSampleUtils.SOURCE;
 		for (int i = 0; i < 10; i++) {

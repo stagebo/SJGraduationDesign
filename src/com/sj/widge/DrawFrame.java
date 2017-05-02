@@ -12,8 +12,7 @@ import com.sj.utils.ScreenUtils;
 
 /**
  * 主窗体
- * 
- * @author Administrator
+ * @author Stagebo
  *
  */
 public class DrawFrame extends JFrame {
@@ -38,10 +37,10 @@ public class DrawFrame extends JFrame {
 		JMenuBar myBar = new JMenuBar();
 		setJMenuBar(myBar);
 		/*一级菜单*/
-		JMenu[] m = { new JMenu("操作"), new JMenu("ͼ��"), new JMenu("切换画笔大小"), new JMenu("颜色") };
+		JMenu[] m = { new JMenu("操作"), new JMenu("形状"), new JMenu("切换画笔大小"), new JMenu("颜色") };
 		/*二级菜单*/
 		JMenuItem[][] mI = { { new JMenuItem("清空"), new JMenuItem("�½�"), new JMenuItem("����") },
-				{ new JMenuItem("����"), new JMenuItem("ֱ��"), new JMenuItem("��Բ"), new JMenuItem("����") },
+				{ new JMenuItem("自由"), new JMenuItem("ֱ直线"), new JMenuItem("椭圆"), new JMenuItem("矩形") },
 				{ new JMenuItem("5"), new JMenuItem("10"), new JMenuItem("15"), new JMenuItem("30"), },
 				{ new JMenuItem("红色"), new JMenuItem("黄色"), new JMenuItem("绿色"), new JMenuItem("灰色"),
 						new JMenuItem("黑色"), new JMenuItem("蓝色") } };

@@ -14,7 +14,12 @@ import java.io.BufferedWriter;
 import java.io.FileReader; 
 import java.io.FileWriter; 
 import java.util.Vector; 
- 
+
+/**
+ * 
+ * @author Stagebo
+ *
+ */
 public class MyPanel extends Panel{ 
      
     /**

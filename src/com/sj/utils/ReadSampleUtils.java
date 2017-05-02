@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import com.sj.utils.CommonEnum.ImageSample;
 /**
  * 样本读取类
- * @author Administrator
+ * @author  Stagebo
  *
  */
 public class ReadSampleUtils {
@@ -23,7 +23,9 @@ public class ReadSampleUtils {
 	static{
 		for(int i=0;i<10;i++){
 			for(int j=0;j<ImageSample.SAMPLE_COUNT;j++){
-				SOURCE.add(readTxt(i+"_"+j+".txt"));
+				int a[][]=readTxt(i+"_"+j+".txt");
+				//a=ImageUtils.thinImage(a);
+				SOURCE.add(a);
 			}
 		}
 	}

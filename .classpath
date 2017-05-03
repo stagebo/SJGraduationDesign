@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/mylib"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/mylib">
+		<accessrules>
+			<accessrule kind="accessible" pattern="**"/>
+		</accessrules>
+	</classpathentry>
 	<classpathentry kind="lib" path="D:/Program Files (x86)/JDK1.8/jre/lib/charsets.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files (x86)/JDK1.8/jre/lib/deploy.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files (x86)/JDK1.8/jre/lib/javaws.jar"/>

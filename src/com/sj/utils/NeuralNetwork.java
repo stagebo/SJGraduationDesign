@@ -3,6 +3,8 @@ package com.sj.utils;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import javax.xml.crypto.Data;
+
 import org.encog.engine.network.activation.ActivationSigmoid;
 import org.encog.ml.data.MLDataSet;
 import org.encog.ml.data.basic.BasicMLDataSet;
@@ -31,11 +33,13 @@ public class NeuralNetwork {
 		// If the network does not have an input, output or hidden layers, then
 		// Nguyen-Widrow cannot be used and a simple range randomize between -1
 		// and 1 will be used.
+		Log4jUtils.info(this, "NeuralNetwork", "随机初始化bp网络各参数");
 		network.reset();
 	}
 
 	/* 训练数据设置 */
 	public void setData(TreeMap<Integer, ArrayList<double[]>> d) {
+		Log4jUtils.info(this, "setData", "初始化训练数据");
 		int size = 0;
 		for (int i = 0; i < 10; i++) {
 			ArrayList<double[]> l = d.get(i);
@@ -59,18 +63,23 @@ public class NeuralNetwork {
 	}
 
 	public boolean train() {
+		double error=0.00001;
+		int count=10000;
 		if (!isSetData)
 			return false;
+		Log4jUtils.info(this, "train", "开始训练，训练误差阈值："+error+",最大训练次数："+count);
 		final ResilientPropagation train = new ResilientPropagation(network, trainingSet);
 
 		int epoch = 1;
 
 		do {
+			Long timeStart=System.currentTimeMillis();
 			train.iteration();
 			//System.out.println("Epoch #" + epoch + " Error: " + train.getError());
-			Log4jUtils.info(this, "train", "训练次数  #" + epoch + " 本次训练误差: " + train.getError());
+			Log4jUtils.info(this, "train", "训练次数  #" + epoch + " ,本次训练误差: " + train.getError()+
+					",本次训练耗时："+(System.currentTimeMillis()-timeStart)+"ms");
 			epoch++;
-		} while (train.getError() > 0.00001&&epoch<10000);
+		} while (train.getError() > error&&epoch<count);
 		train.finishTraining();
 
 		isTrained = true;

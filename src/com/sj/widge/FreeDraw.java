@@ -29,6 +29,7 @@ public class FreeDraw extends JPanel {
 	 * 标记需要更新的x、y坐标
 	 */
 	private int nx = 0, ny = 0;
+	private boolean isFreeDraw = false;
 	/**
 	 * 
 	 */
@@ -69,26 +70,33 @@ public class FreeDraw extends JPanel {
 	public void refresh(int xx, int yy) {
 		nx = xx;
 		ny = yy;
+		isFreeDraw = true;
 		repaint();
 	}
 
 	/**
 	 * 重新绘制函数
 	 */
-	public void paint(Graphics g) {
-		
+	public void paint(Graphics g) {		
 		if (!isInit) {
 			g.setColor(bkColor);
 			g.fillRect(0, 0, getWidth(), getHeight());
 			isInit = true;
 			return;
 		}
-		g.setColor(lineColor);
-		g.fillRect(nx, ny, lineWidth, lineWidth);
-	}
-	public void paint(Graphics g,int k){
+		if (isFreeDraw) {
+			g.setColor(lineColor);
+			g.fillRect(nx, ny, lineWidth, lineWidth);
+			isFreeDraw = false;
+			return;
+		}
 		super.paint(g);
 	}
+
+	public void paint(Graphics g, int k) {
+		super.paint(g);
+	}
+
 	public void cleanAll() {
 		isInit = false;
 		repaint();

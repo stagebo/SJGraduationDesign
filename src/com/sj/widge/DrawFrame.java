@@ -148,8 +148,8 @@ public class DrawFrame extends JFrame {
 				/*获取面板绘图结果*/
 				
 				BufferedImage img = new BufferedImage(panel.getWidth(),panel.getHeight(), BufferedImage.TYPE_INT_RGB);   
-				Graphics2D g2 =img.createGraphics();
-				img=(BufferedImage )panel.createImage(panel.getWidth(), panel.getHeight());
+				Graphics2D g2 =(Graphics2D) img.getGraphics();
+				panel.paint(g2);
 				 try {
 					ImageIO.write(img,"jpg",new File("C:\\Users\\Administrator\\Desktop\\1.jpg"));
 				} catch (IOException e1) {

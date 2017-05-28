@@ -17,5 +17,8 @@
 	<classpathentry kind="lib" path="D:/Program Files (x86)/JDK1.8/jre/lib/plugin.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files (x86)/JDK1.8/jre/lib/resources.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files (x86)/JDK1.8/jre/lib/rt.jar"/>
+	<classpathentry kind="lib" path="src/com/sj/jar/commons-math3-3.2.jar"/>
+	<classpathentry kind="lib" path="src/com/sj/jar/encog-core-3.1.0.jar"/>
+	<classpathentry kind="lib" path="src/com/sj/jar/log4j-api-2.0-beta9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

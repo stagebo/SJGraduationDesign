@@ -117,7 +117,7 @@ public class DistinguishImage {
 				re[v] += 1;
 			}
 		}
-		StringUtils.printArray(re);
+		//StringUtils.printArray(re);
 		/*取柱状图最高者为识别结果*/
 		int result = CommonUtils.getMaxIndex(re);
 		return result;

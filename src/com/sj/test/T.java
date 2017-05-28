@@ -1,18 +1,28 @@
 package com.sj.test;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.TreeMap;
+
 import com.sj.utils.ReadSampleUtils;
 import com.sj.utils.StringUtils;
 
 public class T {
 	public static void main(String[] args) {
-		int[][] a = ReadSampleUtils.readTxt("0_0.txt");
+		
+		 TreeMap<Integer, ArrayList<double[]>> s= ReadSampleUtils.SAMPLE_MAP;
+		 for(int i=0;i<10;i++){
+			 ArrayList<double[]> l=s.get(i);
+			 System.out.println(i+"---"+l.size());
+		 }
+		/*int[][] a = ReadSampleUtils.readTxt("0_0.txt");
 		StringUtils.printArray(a);
 		for (int i = 0; i < 10000; i++) {
 
 			a = thinImage(a, 0);
 			a = thinImage(a, 1);
 		}
-		StringUtils.printArray(a);
+		StringUtils.printArray(a);*/
 	}
 
 	public static int[][] thinImage(int[][] a, int key) {

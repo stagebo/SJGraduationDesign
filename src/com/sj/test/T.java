@@ -4,17 +4,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import com.sj.log.Log4jUtils;
 import com.sj.utils.ReadSampleUtils;
 import com.sj.utils.StringUtils;
 
 public class T {
 	public static void main(String[] args) {
 		
-		 TreeMap<Integer, ArrayList<double[]>> s= ReadSampleUtils.SAMPLE_MAP;
-		 for(int i=0;i<10;i++){
-			 ArrayList<double[]> l=s.get(i);
-			 System.out.println(i+"---"+l.size());
-		 }
+		new T().tt();
 		/*int[][] a = ReadSampleUtils.readTxt("0_0.txt");
 		StringUtils.printArray(a);
 		for (int i = 0; i < 10000; i++) {
@@ -24,7 +21,9 @@ public class T {
 		}
 		StringUtils.printArray(a);*/
 	}
-
+	public void tt(){
+		Log4jUtils.info(this,"tt","start");
+	}
 	public static int[][] thinImage(int[][] a, int key) {
 		int w = a.length;
 		int h = a[0].length;

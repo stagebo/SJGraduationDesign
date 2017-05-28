@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+import com.sj.log.Log4jUtils;
 import com.sj.utils.CommonEnum.ImageSample;
 
 /**
@@ -28,6 +29,8 @@ public class ReadSampleUtils {
 	 * 静态读取样本源
 	 */
 	static {
+		Log4jUtils.info("com.sj.utils.ReadSampleUtils", "static block", "开始读取样本文件");
+		Log4jUtils.info("com.sj.utils.ReadSampleUtils", "static block", "开始读取样本文件至List中");
 		/* 读入List */
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < ImageSample.SAMPLE_COUNT; j++) {
@@ -36,9 +39,11 @@ public class ReadSampleUtils {
 				SOURCE.add(a);
 			}
 		}
+		Log4jUtils.info("com.sj.utils.ReadSampleUtils", "static block", "读取样本至List中完毕");
+		Log4jUtils.info("com.sj.utils.ReadSampleUtils", "static block", "开始读取样本至Map中");
 		/* 读入Map */
 		SAMPLE_MAP = readTxtMap();
-
+		Log4jUtils.info("com.sj.utils.ReadSampleUtils", "static block", "读取样本至Map中完毕");
 	}
 
 	/***
@@ -59,7 +64,7 @@ public class ReadSampleUtils {
 		try {
 			file = new File(filePath);
 			if (!file.isFile() || !file.exists()) { // 判断文件是否存在
-				System.out.println("找不到指定的文件");
+				Log4jUtils.sever("com.sj.utils.ReadSampleUtils", "readTex", "找不到指定文件");
 			}
 			read = new InputStreamReader(new FileInputStream(file), encoding);// 考虑到编码格式
 			BufferedReader bufferedReader = new BufferedReader(read);
@@ -74,8 +79,8 @@ public class ReadSampleUtils {
 			}
 			read.close();
 		} catch (Exception e) {
-			System.out.println("读取文件内容出错");
-			e.printStackTrace();
+			Log4jUtils.sever("com.sj.utils.ReadSampleUtils","readTxt", "读取文件内容错误");
+			Log4jUtils.sever("com.sj.utils.ReadSampleUtils","readTxt",e.getMessage());
 		}
 		return result;
 	}

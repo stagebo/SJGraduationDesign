@@ -13,6 +13,7 @@ import javax.swing.*;
 
 import com.sj.algorithm.ANNRecognize;
 import com.sj.algorithm.DistinguishImage;
+import com.sj.log.Log4jUtils;
 import com.sj.utils.NeuralNetwork;
 import com.sj.utils.ReadSampleUtils;
 import com.sj.utils.ScreenUtils;
@@ -40,7 +41,9 @@ public class DrawFrame extends JFrame {
 	 */
 	final private static NeuralNetwork bp = new NeuralNetwork();
 	static {
+		Log4jUtils.info("com.sj.widge.DrawFrame", "static block", "初始化bp网络静态代码块-start");
 		bp.setData(ReadSampleUtils.SAMPLE_MAP);
+		Log4jUtils.info("com.sj.widge.DrawFrame", "static block", "初始化bp网络静态代码块-end");
 	}
 
 	/**
@@ -48,7 +51,7 @@ public class DrawFrame extends JFrame {
 	 */
 	public DrawFrame() {
 		super("绘图Test");
-
+		Log4jUtils.info(this, "DrasFrame", "初始化面板");
 		// �˵���
 		JMenuBar myBar = new JMenuBar();
 		setJMenuBar(myBar);
@@ -77,7 +80,7 @@ public class DrawFrame extends JFrame {
 		 */
 		/* 容器 */
 		final Container contentPane = getContentPane();
-		System.out.println(getWidth() + "-----" + getHeight());
+		//System.out.println(getWidth() + "-----" + getHeight());
 		contentPane.setBounds(0, myBar.getHeight(), getWidth(), getHeight() - myBar.getHeight());
 
 		final FreeDraw panel = new FreeDraw();
@@ -117,19 +120,21 @@ public class DrawFrame extends JFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
+				Log4jUtils.info(this, "actionPerformed", "欧氏距离识别-start");
 				/* 截取屏幕图像 */
 				int x = panel.getX() + getX() + 30;
 				int y = panel.getY() + getY() + 80;
 				int width = panel.getWidth() - 50;
 				int height = panel.getHeight() - 80;
-				System.out.println(x + "--" + y + "--" + width + "--" + height);
+				//System.out.println(x + "--" + y + "--" + width + "--" + height);
+				Log4jUtils.info(this, "actionPerformed", "截屏获取绘图结果");
 				BufferedImage img = ScreenUtils.getScreenShot(x, y, width, height);
 				/* 识别图像 */
 				int aimResult = DistinguishImage.DistinguishImages(img);
 				/* 输出识别结果 */
 				String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()).toString();
 				text.setText(time + "--识别结果：" + aimResult + LINE_SEPARATOR);
-
+				Log4jUtils.info(this, "actionPerformed", "欧氏距离识别-end！识别结果："+aimResult);
 			}
 		});
 
@@ -138,29 +143,32 @@ public class DrawFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//int x = panel.getX() + getX() + 8;
-				//int y = panel.getY() + getY() + 22+myBar.getHeight();
-				//int width = panel.getWidth();
-				//int height = panel.getHeight();
+				// int x = panel.getX() + getX() + 8;
+				// int y = panel.getY() + getY() + 22+myBar.getHeight();
+				// int width = panel.getWidth();
+				// int height = panel.getHeight();
 				// System.out.println(x + "--" + y + "--" + width + "--" +
 				// height);
-				//BufferedImage img = ScreenUtils.getScreenShot(x, y, width, height);
-				/*获取面板绘图结果*/
-				
-				BufferedImage img = new BufferedImage(panel.getWidth(),panel.getHeight(), BufferedImage.TYPE_INT_RGB);   
-				Graphics2D g2 =(Graphics2D) img.getGraphics();
+				// BufferedImage img = ScreenUtils.getScreenShot(x, y, width,
+				// height);
+				/* 获取面板绘图结果 */
+
+				BufferedImage img = new BufferedImage(panel.getWidth(), panel.getHeight(), BufferedImage.TYPE_INT_RGB);
+				Graphics2D g2 = (Graphics2D) img.getGraphics();
 				panel.paint(g2);
-				 try {
-					ImageIO.write(img,"jpg",new File("C:\\Users\\Administrator\\Desktop\\1.jpg"));
+				try {
+					ImageIO.write(img, "jpg", new File("C:\\Users\\Administrator\\Desktop\\1.jpg"));
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				/* 识别图像 */
-				//int aimResult = new ANNRecognize().DistinguishImages(img,bp);
+				// int aimResult = new ANNRecognize().DistinguishImages(img,bp);
 				/* 输出识别结果 */
-				//String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()).toString();
-				//text.setText(time + "--ann识别结果：" + aimResult + LINE_SEPARATOR);
+				// String time = new SimpleDateFormat("yyyy-MM-dd
+				// HH:mm:ss").format(new Date()).toString();
+				// text.setText(time + "--ann识别结果：" + aimResult +
+				// LINE_SEPARATOR);
 			}
 		});
 		/**/
@@ -169,8 +177,11 @@ public class DrawFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if (!bp.isTrained)
+				if (!bp.isTrained) {
+					Log4jUtils.info(this, "actionPerformed", "开始训练");
 					bp.train();
+					Log4jUtils.info(this, "actionPerformed", "训练结束");
+				}
 				text.setText("训练完成！" + LINE_SEPARATOR);
 			}
 		});
@@ -187,7 +198,7 @@ public class DrawFrame extends JFrame {
 		mI[0][0].addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				//panel.readFromFile();
+				// panel.readFromFile();
 			}
 
 		});
@@ -207,7 +218,7 @@ public class DrawFrame extends JFrame {
 
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				//panel.saveToFile();
+				// panel.saveToFile();
 			}
 
 		});
@@ -218,7 +229,7 @@ public class DrawFrame extends JFrame {
 			mI[1][type].addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent e) {
-					//panel.setDrawType(t);
+					// panel.setDrawType(t);
 				}
 			});
 			mI[2][type].addActionListener(new ActionListener() {

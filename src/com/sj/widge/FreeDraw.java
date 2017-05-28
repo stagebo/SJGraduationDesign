@@ -10,6 +10,8 @@ import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.sj.log.Log4jUtils;
+
 /**
  * 自由画板实现类
  * 
@@ -77,7 +79,8 @@ public class FreeDraw extends JPanel {
 	/**
 	 * 重新绘制函数
 	 */
-	public void paint(Graphics g) {		
+	public void paint(Graphics g) {	
+		//Log4jUtils.info(this, "paint", "重新绘制");
 		if (!isInit) {
 			g.setColor(bkColor);
 			g.fillRect(0, 0, getWidth(), getHeight());
@@ -98,6 +101,7 @@ public class FreeDraw extends JPanel {
 	}
 
 	public void cleanAll() {
+		Log4jUtils.info(this, "cleanAll", "清空面板");
 		isInit = false;
 		repaint();
 	}

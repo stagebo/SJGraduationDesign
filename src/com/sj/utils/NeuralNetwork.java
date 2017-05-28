@@ -10,6 +10,8 @@ import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.layers.BasicLayer;
 import org.encog.neural.networks.training.propagation.resilient.ResilientPropagation;
 
+import com.sj.log.Log4jUtils;
+
 public class NeuralNetwork {
 	public BasicNetwork network = new BasicNetwork();
 	public MLDataSet trainingSet = null;
@@ -49,9 +51,9 @@ public class NeuralNetwork {
 			}
 		}
 		if(trainingSet==null){
-			System.out.println("trainingSet is null");
+			Log4jUtils.sever(this, "setData", "trainingSet对象为空！");
 		}
-		System.out.println(input.length+"len"+aim.length);
+		//System.out.println(input.length+"len"+aim.length);
 		trainingSet = new BasicMLDataSet(input, aim);
 		isSetData = true;
 	}
@@ -65,7 +67,8 @@ public class NeuralNetwork {
 
 		do {
 			train.iteration();
-			System.out.println("Epoch #" + epoch + " Error: " + train.getError());
+			//System.out.println("Epoch #" + epoch + " Error: " + train.getError());
+			Log4jUtils.info(this, "train", "训练次数  #" + epoch + " 本次训练误差: " + train.getError());
 			epoch++;
 		} while (train.getError() > 0.00001&&epoch<10000);
 		train.finishTraining();
@@ -78,7 +81,8 @@ public class NeuralNetwork {
 		double[] o = new double[4];
 		network.compute(t, o);
 		double re = getNumMap(o);
-		System.out.print(o[0]+"--"+o[1]+"--"+o[2]+"--"+o[3]);
+		//System.out.print(o[0]+"--"+o[1]+"--"+o[2]+"--"+o[3]);
+		Log4jUtils.info(this, "compute", "本次拟合结果："+o[0]+"--"+o[1]+"--"+o[2]+"--"+o[3]);
 		return re;
 	}
 

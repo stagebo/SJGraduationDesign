@@ -26,7 +26,7 @@ public class DistinguishImage {
 	 * @return 识别结果
 	 */
 	public static int DistinguishNumber(int[][] a) {
-		StringUtils.printArray(a);
+		//StringUtils.printArray(a);
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < a.length; j++) {
 				if (a[i][j] == 0) {
@@ -65,7 +65,7 @@ public class DistinguishImage {
 		}
 		for (int i = 0; i < distence.length; i++)
 			distence[i] += l3[i];
-		StringUtils.printArray(distence);
+		//StringUtils.printArray(distence);
 		int result = CommonUtils.getMinIndex(distence);
 		return result;
 	}
@@ -86,7 +86,7 @@ public class DistinguishImage {
 				}
 			}
 		}
-		StringUtils.printArray(a);
+		//StringUtils.printArray(a);
 		/*获取样本源*/
 		ArrayList<int[][]> source = ReadSampleUtils.SOURCE;
 		/*计算目标与样本源的距离,map结构：<distence,[sample1,sample2,sample3...]>*/
@@ -113,7 +113,7 @@ public class DistinguishImage {
 			}
 			for (int j = 0; j < value.size(); j++) {
 				int v = value.get(j);
-				System.out.println(v);
+				//System.out.println(v);
 				re[v] += 1;
 			}
 		}

@@ -8,6 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import com.sj.log.Log4jUtils;
 import com.sj.utils.CommonEnum.ImageSample;
 
 /**
@@ -130,9 +131,10 @@ public class ImageUtils {
 				try {
 					result[j][i] = a[sy + j][sx + i];
 				} catch (Exception e) {
-					System.out.println("异常Index：" + i + "--" + j);
-					System.out.println("异常：" + ww + "--" + hh);
-					System.out.println("异常：" + sy + "--" + sx);
+					//System.out.println("异常Index：" + i + "--" + j);
+					//System.out.println("异常：" + ww + "--" + hh);
+					//System.out.println("异常：" + sy + "--" + sx);
+					Log4jUtils.sever("com.sj.utils.ImageUtils", "cutWhitePart", "图片剪切遇到异常！");
 					// e.printStackTrace();
 					return null;
 				}
@@ -151,7 +153,7 @@ public class ImageUtils {
 	 * @return
 	 */
 	public static BufferedImage getImageByArray(int[][] a, int w, int h) {
-		System.out.println(a.length + "--" + a[0].length);
+		//System.out.println(a.length + "--" + a[0].length);
 		BufferedImage img = new BufferedImage(a[0].length, a.length, BufferedImage.TYPE_INT_RGB);
 		for (int i = 0; i < a.length; i++) {
 			for (int j = 0; j < a[0].length; j++) {
@@ -159,7 +161,7 @@ public class ImageUtils {
 					int r = a[i][j];
 					img.setRGB(j, i, r == 0 ? 0 : 0xffffff);
 				} catch (Exception e) {
-					System.out.println(i + "===" + j + a[i][j]);
+					//System.out.println(i + "===" + j + a[i][j]);
 					e.printStackTrace();
 					return null;
 				}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 
+import com.sj.log.Log4jUtils;
 import com.sj.utils.ReadSampleUtils;
 import com.sj.utils.StringUtils;
 import com.sj.widge.DrawFrame;
@@ -18,6 +19,7 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		Log4jUtils.info(Test.class, "main", "程序开始");
 		DrawFrame app = new DrawFrame();
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		app.setBounds(450, 100, 750, 460);
@@ -38,20 +40,7 @@ public class Test {
 		// path=ReadSampleUtils.class.getClassLoader().getResource("").getPath().replace("bin",
 		// "trainingDigits").replace("%20", " ");
 		// System.out.println(path);
-		List<int[][]> l=ReadSampleUtils.SOURCE;
-		int s=l.size();
-		StringUtils.printArray(l.get(170));
-		System.out.println();
-		StringUtils.printArray(l.get(169));
-		System.out.println(s);
+		
 		
 	}
 }
-class rt1{
-	public static void main(String[] args) {
-		
-		System.out.println("tju.edu.cn");
-		
-	}
-}
-

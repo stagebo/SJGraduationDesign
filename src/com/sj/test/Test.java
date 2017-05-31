@@ -24,7 +24,7 @@ public class Test {
 		app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		app.setBounds(450, 100, 750, 460);
 		app.setVisible(true);
-
+        
 		/*
 		 * int[][] i=new int[2][3]; System.out.println(i.length);
 		 * System.out.println(i[0].length);

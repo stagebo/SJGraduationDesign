@@ -85,6 +85,39 @@ public class ReadSampleUtils {
 		return result;
 	}
 
+	public static double[][] readTxtDouble(String fileName) {
+		/* 获取样本源路径 */
+		String path = ReadSampleUtils.class.getClassLoader().getResource("").getPath().replace("bin", "trainingDigits")
+				.replace("%20", " ");
+		String filePath = path + fileName;
+		String encoding = "GBK";
+		File file = null;
+		InputStreamReader read = null;
+		double result[][] = new double[ImageSample.SAMPLE_WIDTH][ImageSample.SAMPLE_HEIGHT];
+		try {
+			file = new File(filePath);
+			if (!file.isFile() || !file.exists()) { // 判断文件是否存在
+				Log4jUtils.sever("com.sj.utils.ReadSampleUtils", "readTex", "找不到指定文件");
+			}
+			read = new InputStreamReader(new FileInputStream(file), encoding);// 考虑到编码格式
+			BufferedReader bufferedReader = new BufferedReader(read);
+			String lineTxt = null;
+			int i = 0;
+			while ((lineTxt = bufferedReader.readLine()) != null) {
+				String[] lineList = lineTxt.split("");
+				for (int j = 0; j < lineList.length; j++) {
+					result[i][j] = Double.parseDouble(lineList[j]);
+				}
+				i += 1;
+			}
+			read.close();
+		} catch (Exception e) {
+			Log4jUtils.sever("com.sj.utils.ReadSampleUtils","readTxt", "读取文件内容错误");
+			Log4jUtils.sever("com.sj.utils.ReadSampleUtils","readTxt",e.getMessage());
+		}
+		return result;
+	}
+	
 	public static double[] readTxts(String fileName) {
 		/* 获取样本源路径 */
 		String path = ReadSampleUtils.class.getClassLoader().getResource("").getPath().replace("bin", "trainingDigits")

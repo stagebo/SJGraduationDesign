@@ -25,7 +25,7 @@ public class StringUtils {
 				if(a[i][j]==0)
 					System.out.print(0);
 				else
-					System.out.print(a[i][j]);
+					System.out.print(a[i][j]+"##");
 			}
 			System.out.println();
 		}
